@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* Universal Design: Visible Focus Ring for Keyboard Navigation (WCAG 2.4.7 AA) */
+:focus-visible {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+.dark :focus-visible {
+  outline: 2px solid #60a5fa !important;
+  outline-offset: 2px !important;
+}
+
+/* Reduced Motion Compliance (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Universal Design: High Contrast Mode (WCAG 2.1 AAA - 15:1+ Contrast) */
+.high-contrast :focus-visible {
+  outline: 3px solid #f59e0b !important;
+  outline-offset: 3px !important;
+}
+
+.high-contrast .wallpaper-dimmer {
+  background: rgba(0, 0, 0, 0.92) !important;
+}
+
+.high-contrast.light .wallpaper-dimmer {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.high-contrast .high-contrast-card {
+  background-color: #050810 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+}
+
+.high-contrast.light .high-contrast-card {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.high-contrast button {
+  font-weight: 700 !important;
+}
+
+/* Comprehensive Print Media Rules */
+@media print {
+  @page {
+    margin: 12mm;
+    size: portrait;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Hide app background wallpaper, floating tools, headers, toolbar, and buttons when printing */
+  .fixed:not(#print-modal-container),
+  header:not(.print-header),
+  nav,
+  main,
+  button,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Transform modal into clean printable sheet flow */
+  #print-modal-container {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #print-modal-container > div {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #print-modal-scroll-area {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure print sheet fills page without cutoff */
+  #printable-lesson-sheet {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+}

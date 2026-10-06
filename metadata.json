@@ -1,0 +1,10 @@
+{
+  "name": "LessonFlow",
+  "description": "Interactive classroom blackboard and lesson planner with multi-screen navigation, student randomizer, group maker, timers, and classroom widgets.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
